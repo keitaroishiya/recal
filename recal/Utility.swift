@@ -16,7 +16,7 @@ class Utility {
 	// (c) http://swift-salaryman.com/uicolorutil.php
 	class func hex (var hexStr : NSString, var alpha : CGFloat) -> UIColor {
 		hexStr = hexStr.stringByReplacingOccurrencesOfString("#", withString: "")
-		let scanner = NSScanner(string: hexStr)
+		let scanner = NSScanner(string: hexStr as String)
 		var color: UInt32 = 0
 		if scanner.scanHexInt(&color) {
 			let r = CGFloat((color & 0xFF0000) >> 16) / 255.0
@@ -32,7 +32,7 @@ class Utility {
 	// API取得の開始処理
 	// (c) http://dev.classmethod.jp/references/ios-8-xcode-6-swift-api-json/
 	class func getData(path: NSString) {
-		let URL: NSURL = NSURL(string: path)!
+		let URL: NSURL = NSURL(string: path as String)!
 		let req: NSURLRequest = NSURLRequest(URL: URL)
 		let connection: NSURLConnection = NSURLConnection(request: req, delegate: self, startImmediately: false)!
 
@@ -42,9 +42,9 @@ class Utility {
 
 	// 取得したAPIデータの処理
 	class func response(res: NSURLResponse!, data: NSData!, error: NSError!){
-		let json:NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as NSDictionary
-		let answer:NSDictionary = json["answer"] as NSDictionary
-		let questions:NSArray = json["question"] as NSArray
+		let json:NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+		let answer:NSDictionary = json["answer"] as! NSDictionary
+		let questions:NSArray = json["question"] as! NSArray
 
 			println(answer["proccess"])
 		// １行ずつログに表示

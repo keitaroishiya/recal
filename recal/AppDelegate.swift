@@ -12,6 +12,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var gameMode: String = ""
+    var columnN: Int = 0
+    var ratio: CGFloat = 1.0
+    var viewWidth: CGFloat = 0.0
+    var viewHeight: CGFloat = 0.0
+    var playedTime: Double = 0.0
+    var is4s: Bool = false
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
